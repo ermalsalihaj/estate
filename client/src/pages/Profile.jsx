@@ -158,7 +158,7 @@ export default function Profile() {
 
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
+      <h1 className="text-3xl font-semibold text-center my-7">Profili</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -176,19 +176,19 @@ export default function Profile() {
         <p className="text-sm self-center">
           {fileUploadError ? (
             <span className="text-red-700">
-              Error Image upload (image must be less than 2 mb)
+              Gabim ngarkimi i imazhit (imazhi duhet të jetë më i vogël se 2 MB)
             </span>
           ) : filePerc > 0 && filePerc < 100 ? (
             <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
           ) : filePerc === 100 ? (
-            <span className="text-green-700">Image successfully uploaded!</span>
+            <span className="text-green-700">Imazhi u ngarkua me sukses!</span>
           ) : (
             ""
           )}
         </p>
         <input
           type="text"
-          placeholder="username"
+          placeholder="emri i përdoruesit"
           defaultValue={currentUser.username}
           id="username"
           className="border p-3 rounded-lg"
@@ -204,7 +204,7 @@ export default function Profile() {
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Fjalëkalimi"
           id="password"
           className="border p-3 rounded-lg"
           onChange={handleChange}
@@ -213,13 +213,13 @@ export default function Profile() {
           disabled={loading}
           className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Update"}
+          {loading ? "Duke ngarkuar..." : "Përditëso"}
         </button>
         <Link
           className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
           to={"/create-listing"}
         >
-          Create Listing
+          Krijo shpallje
         </Link>
       </form>
       <div className="flex justify-between mt-5">
@@ -227,19 +227,19 @@ export default function Profile() {
           onClick={handleDeleteUser}
           className="text-red-700 cursor-pointer"
         >
-          Delete account
+          Fshi llogarinë
         </span>
         <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
-          Sign out
+          Shkyçu
         </span>
       </div>
 
       <p className="text-red-700 mt-5">{error ? error : ""}</p>
       <p className="text-green-700 mt-5">
-        {updateSuccess ? "User is updated successfully!" : ""}
+        {updateSuccess ? "Përdoruesi u përditësua me sukses!" : ""}
       </p>
       <button onClick={handleShowListings} className="text-green-700 w-full">
-        Show Listings
+        Shfaq shpalljet
       </button>
       <p className="text-red-700 mt-5">
         {showListingsError ? "Error showing listings" : ""}
@@ -247,7 +247,7 @@ export default function Profile() {
       {userListings && userListings.length > 0 && (
         <div className="flex flex-col gap-4">
           <h1 className="text-center mt-7 text-2xl font-semibold">
-            Your Listings
+            Shpalljet tuaja
           </h1>
           {userListings.map((listing) => (
             <div
@@ -273,10 +273,10 @@ export default function Profile() {
                   onClick={() => handleListingDelete(listing._id)}
                   className="text-red-700 uppercase"
                 >
-                  Delete
+                  Fshi
                 </button>
                 <Link to={`/update-listing/${listing._id}`}>
-                  <button className="text-green-700 uppercase">Edit</button>
+                  <button className="text-green-700 uppercase">Ndrysho</button>
                 </Link>
               </div>
             </div>

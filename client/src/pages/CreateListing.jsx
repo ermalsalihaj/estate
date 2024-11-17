@@ -124,9 +124,11 @@ export default function CreateListing() {
     e.preventDefault();
     try {
       if (formData.imageUrls.length < 1)
-        return setError("You must upload at least one image");
+        return setError("Duhet të ngarkoni të paktën një imazh");
       if (+formData.regularPrice < +formData.discountPrice)
-        return setError("Discount price must be lower than regular price");
+        return setError(
+          "Çmimi i zbritur duhet të jetë më i ulët se çmimi i rregullt"
+        );
       setLoading(true);
       setError(false);
       const res = await fetch("/api/listing/create", {
@@ -153,13 +155,13 @@ export default function CreateListing() {
   return (
     <main className="p-3 max-w-4xl mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">
-        Create a Listing
+        Krijo një shpallje
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col gap-4 flex-1">
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Emri"
             className="border p-3 rounded-lg"
             id="name"
             maxLength="62"
@@ -170,7 +172,7 @@ export default function CreateListing() {
           />
           <textarea
             type="text"
-            placeholder="Description"
+            placeholder="Përshkrimi"
             className="border p-3 rounded-lg"
             id="description"
             required
@@ -179,7 +181,7 @@ export default function CreateListing() {
           />
           <input
             type="text"
-            placeholder="Address"
+            placeholder="Adresa"
             className="border p-3 rounded-lg"
             id="address"
             required
@@ -195,7 +197,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.type === "sale"}
               />
-              <span>Sell</span>
+              <span>Shitje</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -205,7 +207,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.type === "rent"}
               />
-              <span>Rent</span>
+              <span>Qira</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -215,7 +217,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.parking}
               />
-              <span>Parking spot</span>
+              <span>Vend parkim</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -225,7 +227,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.furnished}
               />
-              <span>Furnished</span>
+              <span>E mobiluar</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -235,7 +237,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.offer}
               />
-              <span>Offer</span>
+              <span>Ofertë</span>
             </div>
           </div>
           <div className="flex flex-wrap gap-6">
@@ -250,7 +252,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
-              <p>Beds</p>
+              <p>Shtrata </p>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -263,7 +265,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
-              <p>Baths</p>
+              <p>Banjo</p>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -277,9 +279,9 @@ export default function CreateListing() {
                 value={formData.regularPrice}
               />
               <div className="flex flex-col items-center">
-                <p>Regular price</p>
+                <p>Çmimi i rregullt</p>
                 {formData.type === "rent" && (
-                  <span className="text-xs">($ / month)</span>
+                  <span className="text-xs">($ / muaj)</span>
                 )}
               </div>
             </div>
@@ -296,9 +298,9 @@ export default function CreateListing() {
                   value={formData.discountPrice}
                 />
                 <div className="flex flex-col items-center">
-                  <p>Discounted price</p>
+                  <p>Çmimi i zbritur</p>
                   {formData.type === "rent" && (
-                    <span className="text-xs">($ / month)</span>
+                    <span className="text-xs">($ / muaj)</span>
                   )}
                 </div>
               </div>
@@ -307,9 +309,9 @@ export default function CreateListing() {
         </div>
         <div className="flex flex-col flex-1 gap-4">
           <p className="font-semibold">
-            Images:
+            Imazhe:
             <span className="font-normal text-gray-600 ml-2">
-              The first image will be the cover (max 6)
+              Imazhi i parë do të jetë cover-i (maksimumi 6).
             </span>
           </p>
           <div className="flex gap-4">
@@ -327,7 +329,7 @@ export default function CreateListing() {
               onClick={handleImageSubmit}
               className="p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80"
             >
-              {uploading ? "Uploading..." : "Upload"}
+              {uploading ? "Duke ngarkuar..." : "Ngarkuar"}
             </button>
           </div>
           <p className="text-red-700 text-sm">
@@ -357,7 +359,7 @@ export default function CreateListing() {
             disabled={loading || uploading}
             className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
           >
-            {loading ? "Creating..." : "Create listing"}
+            {loading ? "Po krijohet..." : "Krijo shpallje"}
           </button>
           {error && <p className="text-red-700 text-sm">{error}</p>}
         </div>

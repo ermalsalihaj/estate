@@ -51,21 +51,21 @@ export default function Home() {
       {/* top */}
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
         <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
-          Find your next <span className="text-slate-500">perfect</span>
+          Gjeni vendin tuaj të <span className="text-slate-500">ardhshëm </span>
           <br />
-          place with ease
+          të përkryer me lehtësi
         </h1>
         <div className="text-gray-400 text-xs sm:text-sm">
-          Sahand Estate is the best place to find your next perfect place to
-          live.
+          Ermal Estate është vendi më i mirë për të gjetur vendin tuaj të
+          ardhshëm të përkryer për të jetuar.
           <br />
-          We have a wide range of properties for you to choose from.
+          Ne kemi një gamë të gjerë pronash për të zgjedhur.
         </div>
         <Link
           to={"/search"}
           className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
         >
-          Let's get started...
+          Le të fillojmë...
         </Link>
       </div>
 
@@ -94,13 +94,13 @@ export default function Home() {
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent offers
+                Ofertat e fundit
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
                 to={"/search?offer=true"}
               >
-                Show more offers
+                Shiko më shumë oferta
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -114,13 +114,13 @@ export default function Home() {
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent places for rent
+                Vendet e fundit për qira
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
                 to={"/search?type=rent"}
               >
-                Show more places for rent
+                Trego më shumë vende për qira
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -134,13 +134,13 @@ export default function Home() {
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-slate-600">
-                Recent places for sale
+                Vendet e fundit për shitje
               </h2>
               <Link
                 className="text-sm text-blue-800 hover:underline"
                 to={"/search?type=sale"}
               >
-                Show more places for sale
+                Shiko më shumë vende për shitje
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">

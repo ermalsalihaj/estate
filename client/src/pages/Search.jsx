@@ -133,19 +133,19 @@ export default function Search() {
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <div className="flex items-center gap-2">
             <label className="whitespace-nowrap font-semibold">
-              Search Term:
+              Termi i Kërkimit:
             </label>
             <input
               type="text"
               id="searchTerm"
-              placeholder="Search..."
+              placeholder="Kerko..."
               className="border rounded-lg p-3 w-full"
               value={sidebardata.searchTerm}
               onChange={handleChange}
             />
           </div>
           <div className="flex gap-2 flex-wrap items-center">
-            <label className="font-semibold">Type:</label>
+            <label className="font-semibold">Lloji:</label>
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -154,7 +154,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.type === "all"}
               />
-              <span>Rent & Sale</span>
+              <span>Qira dhe Shitje</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -164,7 +164,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.type === "rent"}
               />
-              <span>Rent</span>
+              <span>Qira</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -174,7 +174,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.type === "sale"}
               />
-              <span>Sale</span>
+              <span>Shitje</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -184,11 +184,11 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.offer}
               />
-              <span>Offer</span>
+              <span>Ofertë</span>
             </div>
           </div>
           <div className="flex gap-2 flex-wrap items-center">
-            <label className="font-semibold">Amenities:</label>
+            <label className="font-semibold">Facilitetet:</label>
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -197,7 +197,7 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.parking}
               />
-              <span>Parking</span>
+              <span>Parkim</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -207,39 +207,43 @@ export default function Search() {
                 onChange={handleChange}
                 checked={sidebardata.furnished}
               />
-              <span>Furnished</span>
+              <span>E mobiluar</span>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <label className="font-semibold">Sort:</label>
+            <label className="font-semibold">Rendit:</label>
             <select
               onChange={handleChange}
               defaultValue={"created_at_desc"}
               id="sort_order"
               className="border rounded-lg p-3"
             >
-              <option value="regularPrice_desc">Price high to low</option>
-              <option value="regularPrice_asc">Price low to hight</option>
-              <option value="createdAt_desc">Latest</option>
-              <option value="createdAt_asc">Oldest</option>
+              <option value="regularPrice_desc">
+                Çmimi nga më i lartë në më të ulët
+              </option>
+              <option value="regularPrice_asc">
+                Çmimi nga më i ulët në më të lartë
+              </option>
+              <option value="createdAt_desc">Më të rejat</option>
+              <option value="createdAt_asc">Më të vjetrat</option>
             </select>
           </div>
           <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
-            Search
+            Kërko
           </button>
         </form>
       </div>
       <div className="flex-1">
         <h1 className="text-3xl font-semibold border-b p-3 text-slate-700 mt-5">
-          Listing results:
+          Rezultatet e shpalljeve:
         </h1>
         <div className="p-7 flex flex-wrap gap-4">
           {!loading && listings.length === 0 && (
-            <p className="text-xl text-slate-700">No listing found!</p>
+            <p className="text-xl text-slate-700">Nuk u gjet asnjë shpallje!</p>
           )}
           {loading && (
             <p className="text-xl text-slate-700 text-center w-full">
-              Loading...
+              Duke ngarkuar...
             </p>
           )}
 
@@ -253,7 +257,7 @@ export default function Search() {
               onClick={onShowMoreClick}
               className="text-green-700 hover:underline p-7 text-center w-full"
             >
-              Show more
+              Shfaq më shumë
             </button>
           )}
         </div>
